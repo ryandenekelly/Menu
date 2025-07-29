@@ -1,6 +1,8 @@
 #pragma once
 
+#if USE_ENC
 #include "tim.h"
+
 #include <cstdint>
 
 class MenuInput
@@ -19,6 +21,7 @@ class PushButton : public MenuInput
 	GPIO_TypeDef* m_port;
 };
 
+
 class Encoder : public MenuInput
 {
     public:
@@ -34,3 +37,4 @@ class Encoder : public MenuInput
 	float m_res;
 
 };
+#endif

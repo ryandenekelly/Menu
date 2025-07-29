@@ -6,6 +6,7 @@
 #include <string>
 #include <cmath>
 
+#include "stm32f4xx_hal.h"
 #include "DisplayDevice.hpp"
 #include "MenuInput.hpp"
 
@@ -50,12 +51,13 @@ class SubMenu
 	std::uint16_t m_borderColour;
 	std::uint16_t m_textColour;
 	std::uint16_t m_bgColour;
-    	bool m_highlighted;
-    	bool m_highlightPending;
-    	float m_value;
+    bool m_highlighted;
+    bool m_highlightPending;
+    float m_value;
+    virtual bool writeText(DisplayDevice* displayDevice, TextAlign textAlign, std::uint8_t x, std::uint8_t y);
 
     private:
-	virtual bool writeText(DisplayDevice* displayDevice, TextAlign textAlign, std::uint8_t x, std::uint8_t y);
+
 };
 
 class LabelMenu : public SubMenu
@@ -111,6 +113,7 @@ class DisplayMenu : public SubMenu
 
 };
 
+#if USE_ENC
 class InputMenu : public DisplayMenu
 {
     public:
@@ -161,5 +164,5 @@ class EncoderMenu : public SubMenu
 
 	bool writeText(DisplayDevice* displayDevice, TextAlign textAlign, std::uint8_t x, std::uint8_t y);
 };
-
+#endif
 

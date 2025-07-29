@@ -1,5 +1,5 @@
 #include "SubMenu.hpp"
-
+#if USE_ENC
 EncoderMenu::EncoderMenu() : SubMenu()
 {
     m_str = "";
@@ -149,3 +149,4 @@ bool EncoderMenu::refresh(DisplayDevice* displayDevice, std::uint16_t x, std::ui
     }
     return false;
 }
+#endif

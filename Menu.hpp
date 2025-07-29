@@ -43,14 +43,16 @@ class Menu
 	void startMenu();
 	void runMenu();
 
+	SubMenu* getSubMenu(std::uint32_t index);
+
 
 
 	virtual bool addSubMenu(SubMenu&& subMenu);
 	virtual bool addSubMenu(SubMenu&& subMenuA, SubMenu&& subMenuB, SubMenu&& subMenuC=SubMenu(), SubMenu&& subMenuD=SubMenu());
 	virtual bool addSubMenu(std::uint8_t count...);
 
-	bool addEncoder(Encoder&& enc);
-	bool addPushButton(PushButton&& btn);
+	//bool addEncoder(Encoder&& enc);
+	//bool addPushButton(PushButton&& btn);
 
 
 	std::uint8_t subMenuSize;
@@ -59,9 +61,9 @@ class Menu
 	SubMenu* m_subMenus[V_MAX*H_MAX];
 	std::uint8_t m_menuCursor;
 	std::uint8_t m_highlightCount;
-	Encoder* m_encoders[ENC_MAX];
+	//Encoder* m_encoders[ENC_MAX];
 	std::uint8_t m_encoderSize;
-	PushButton* m_buttons[BTN_MAX];
+	//PushButton* m_buttons[BTN_MAX];
 	std::uint8_t m_buttonSize;
 
 

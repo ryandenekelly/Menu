@@ -1,5 +1,6 @@
 #include "SubMenu.hpp"
 
+#if USE_ENC
 InputMenu::InputMenu() : DisplayMenu()
 {
     m_executeFunction = nullptr;
@@ -36,3 +37,4 @@ bool InputMenu::updateValue()
        m_value = m_displayFunction();
        return true;
 }
+#endif

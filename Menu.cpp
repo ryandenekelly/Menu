@@ -1,6 +1,9 @@
 #include "Menu.hpp"
 #include "interrupts.hpp"
+
+#if USE_ENC
 #include "tim.h"
+#endif
 
 #include <cstring>
 #include <typeinfo>
@@ -254,33 +257,33 @@ bool Menu::enterValue(float value)
 }
 
 
-bool Menu::addEncoder(Encoder&& enc)
-{
-    if(m_encoderSize + 1 >= ENC_MAX)
-    {
-	return false;
-    }
-    if(m_encoders[m_encoderSize])
-    {
-	m_encoders[m_encoderSize++] = &enc;
-	return true;
-    }
-    return false;
-}
+//bool Menu::addEncoder(Encoder&& enc)
+//{
+//    if(m_encoderSize + 1 >= ENC_MAX)
+//    {
+//	return false;
+//    }
+//    if(m_encoders[m_encoderSize])
+//    {
+//	m_encoders[m_encoderSize++] = &enc;
+//	return true;
+//    }
+//    return false;
+//}
 
-bool Menu::addPushButton(PushButton&& btn)
-{
-    if(m_buttonSize + 1 >= BTN_MAX)
-    {
-	return false;
-    }
-    if(m_buttons[m_buttonSize])
-    {
-	m_buttons[m_buttonSize++] = &btn;
-	return true;
-    }
-    return false;
-}
+//bool Menu::addPushButton(PushButton&& btn)
+//{
+//    if(m_buttonSize + 1 >= BTN_MAX)
+//    {
+//	return false;
+//    }
+//    if(m_buttons[m_buttonSize])
+//    {
+//	m_buttons[m_buttonSize++] = &btn;
+//	return true;
+//    }
+//    return false;
+//}
 
 void Menu::processButtonInput()
 {
@@ -304,11 +307,11 @@ void Menu::processButtonInput()
 	g_button_right_pending = false;
 	moveCursorRight();
     }
-    if(g_button_enc_push_pending)
-    {
-	g_button_enc_push_pending = false;
-	m_subMenus[m_menuCursor]->callExecuteFunction();
-    }
+//    if(g_button_enc_push_pending)
+//    {
+//	g_button_enc_push_pending = false;
+//	m_subMenus[m_menuCursor]->callExecuteFunction();
+//    }
 }
 
 void Menu::runMenu()
@@ -324,3 +327,4 @@ void Menu::startMenu()
     drawInitialMenu();
 
 }
+

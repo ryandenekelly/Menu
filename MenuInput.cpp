@@ -1,6 +1,7 @@
 #include "MenuInput.hpp"
 #include "math.h"
 
+#if USE_ENC
 PushButton::PushButton()
 {
     m_pin = 0;
@@ -48,3 +49,4 @@ bool Encoder::getEncValue(float& value)
 }
 
 
+#endif
